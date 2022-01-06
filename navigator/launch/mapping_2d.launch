@@ -1,0 +1,17 @@
+<launch>
+  <arg name="scale" default = "10"/>
+  <arg name="resize" default = "1"/>
+  <arg name="max_x" default = "50"/>
+  <arg name="min_x" default = "-50"/>
+  <arg name="max_z" default = "50"/>
+  <arg name="min_z" default = "-50"/>
+  <arg name="occu_thr" default = "0.55"/>
+  <arg name="free_thr" default = "0.50"/>
+  <arg name="visit" default = "1"/>
+  <arg name="free" default = "5"/>
+
+  <node name="GRIDMAP" pkg="ORB_SLAM2" type="grid_mapping" 
+    args="$(arg scale) $(arg resize) $(arg max_x) $(arg min_x) 
+          $(arg max_z) $(arg min_z) $(arg occu_thr) $(arg free_thr)
+          $(arg visit) $(arg free)" output="screen"/>
+</launch>

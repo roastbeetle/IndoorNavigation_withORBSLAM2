@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find final)/launch/mapping_3d.launch"/>
+  <include file="$(find final)/launch/mapping_2d.launch"/>
+</launch>
+

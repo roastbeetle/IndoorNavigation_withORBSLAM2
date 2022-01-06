@@ -1,0 +1,21 @@
+<launch>
+  <!--<include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="output" value="screen"/>
+  </include>-->
+  <node name="foo_throttler1" type="throttle" pkg="topic_tools" args="messages /camera/color/image_raw 20 /camera/color/image_raw_throttle" />
+  <node name="foo_throttler2" type="throttle" pkg="topic_tools" args="messages /camera/aligned_depth_to_color/image_raw 20 /camera/aligned_depth_to_color/image_raw_throttle" />
+	
+  <arg name="voca_path" default="/home/lb/nin_ws/src/ORB_SLAM2_grid_navigation/Vocabulary/ORBvoc.bin"/>
+  <arg name="yaml_path" default="/home/lb/nin_ws/src/ORB_SLAM2_grid_navigation/Examples/ROS/ORB_SLAM2/ddd2.yaml"/>
+  <arg name="map_file" default="gwagi3f_2.bin"/>
+  <arg name="use_viewer" default="true"/>
+  <arg name="local_only" default="true"/>
+  <arg name="load_map" default="true"/>
+
+  <node name="RGBD" pkg="ORB_SLAM2" type="RGBDpub" args="$(arg voca_path) $(arg yaml_path) $(arg map_file) $(arg use_viewer) $(arg local_only) $(arg load_map)" output="screen"/>
+  <include file="$(find astar)/launch/astar.launch"/>
+  <node name="pose_converter" pkg="navigator" type="pose_converter.py" output="screen"/>
+  <node name="navigation" pkg="navigator" type="navigation.py" output="screen"/>
+  <node name="feedback" pkg="navigator" type="feedback.py" output="screen"/>
+  <node name="navigation_gui" pkg="navigator" type="navigator.py" output="screen"/>
+</launch>

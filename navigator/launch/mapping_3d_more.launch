@@ -1,0 +1,13 @@
+<launch>
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="output" value="log"/>
+  </include>
+
+  <arg name="voca_path" default="/home/ozo/nin_ws/src/ORB_SLAM2_grid_navigation/Vocabulary/ORBvoc.bin"/>
+  <arg name="yaml_path" default="/home/ozo/nin_ws/src/ORB_SLAM2_grid_navigation/Examples/ROS/ORB_SLAM2/ddd.yaml"/>
+  <arg name="use_viewer" default="true"/>
+  <arg name="local_only" default="false"/>
+  <arg name="load_map" default="true"/>
+
+  <node name="RGBD" pkg="ORB_SLAM2" type="RGBDpub" args="$(arg voca_path) $(arg yaml_path) $(arg use_viewer) $(arg local_only) $(arg load_map)" output="screen"/>
+</launch>
