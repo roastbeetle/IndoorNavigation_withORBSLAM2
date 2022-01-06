@@ -1,19 +1,18 @@
 # IndoorNavigation_withORBSLAM2
 
-Mapping & Localization : ORB_SLAM2
-PathPlanning : A* + Simplified Path
+### Mapping & Localization : ORB_SLAM2
 
 
+### PathPlanning : A* + Simplified Path
 
+# Software
+OS            : Ubuntu 18.04
 
-OS : Ubuntu 18.04
+File Platform : ROS-melodic
 
-ROS : ROS-melodic
+Sensor        : Realsense d435 (RGBD)
 
-Sensor : Realsense d435 (RGBD)
-
-
-
+# Core Projects
 
 ORB_SLAM2 : Changed some Sources & Parameters
 
